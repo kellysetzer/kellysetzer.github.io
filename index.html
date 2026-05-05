@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelly Setzer — Client Services Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --coral: #D85A30; --coral-light: #FAECE7; --coral-dark: #4A1B0C;
+    --teal: #0F6E56; --teal-light: #E1F5EE; --teal-mid: #1D9E75;
+    --amber: #EF9F27; --amber-light: #FAEEDA; --amber-dark: #412402;
+    --purple: #7F77DD; --purple-light: #EEEDFE; --purple-dark: #26215C;
+    --ink: #1a1a1a; --muted: #555; --soft: #f5f3ee; --white: #ffffff; --border: #e0ddd6;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--soft); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+  header { background: var(--ink); color: var(--white); position: relative; overflow: hidden; }
+  .header-slash { position: absolute; top: 0; right: 0; width: 44%; height: 100%; background: var(--coral); clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%); z-index: 0; }
+  .header-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--amber) 0%, var(--amber) 55%, var(--coral) 55%); z-index: 2; }
+  .header-inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 56px 48px 50px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 32px; }
+  .name-block h1 { font-family: var(--font-display); font-size: clamp(56px, 9vw, 100px); line-height: 0.88; letter-spacing: 2px; color: var(--white); }
+  .name-block h1 span { color: var(--amber); }
+  .name-block .tagline { margin-top: 14px; font-size: 11.5px; font-weight: 500; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .contact-block { text-align: right; padding-bottom: 2px; }
+  .contact-block a, .contact-block p { display: block; font-size: 13px; color: rgba(255,255,255,0.7); text-decoration: none; line-height: 2; transition: color 0.2s; }
+  .contact-block a:hover { color: var(--amber); }
+  .contact-block .li-btn { display: inline-block; margin-top: 10px; background: var(--amber); color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; text-decoration: none; }
+  .contact-block .li-btn:hover { background: #f5b83a; }
+
+  .page { max-width: 980px; margin: 44px auto 80px; padding: 0 24px; display: grid; grid-template-columns: 1fr 292px; gap: 36px; }
+
+  .section-label { font-family: var(--font-display); font-size: 10.5px; letter-spacing: 4px; text-transform: uppercase; color: var(--coral); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-label::after { content: ''; flex: 1; height: 2px; background: var(--coral); opacity: 0.2; }
+
+  .summary-card { background: var(--ink); color: var(--white); border-radius: 3px; padding: 26px 32px; margin-bottom: 40px; position: relative; overflow: hidden; }
+  .summary-card::before { content: '"'; font-family: var(--font-display); font-size: 180px; color: rgba(255,255,255,0.04); position: absolute; top: -24px; left: 14px; line-height: 1; pointer-events: none; }
+  .summary-card p { font-size: 14.5px; line-height: 1.78; color: rgba(255,255,255,0.82); position: relative; z-index: 1; }
+
+  .job { margin-bottom: 34px; padding-bottom: 34px; border-bottom: 1px solid var(--border); }
+  .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .job-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 3px; }
+  .job-title { font-size: 16.5px; font-weight: 700; color: var(--ink); }
+  .job-date { font-size: 11.5px; font-weight: 600; color: var(--white); background: var(--coral); padding: 3px 10px; border-radius: 2px; white-space: nowrap; }
+  .job-company { font-size: 13px; font-weight: 600; color: var(--teal-mid); letter-spacing: 0.3px; margin-bottom: 11px; }
+  .job ul { list-style: none; }
+  .job ul li { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 6px; padding-left: 18px; position: relative; }
+  .job ul li::before { content: '▸'; position: absolute; left: 0; color: var(--coral); font-size: 10px; top: 5px; }
+
+  .sidebar-section { background: var(--white); border-radius: 3px; padding: 22px; margin-bottom: 18px; border: 1px solid var(--border); }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-cell { text-align: center; padding: 12px 6px; background: var(--soft); border-radius: 3px; }
+  .stat-num { font-family: var(--font-display); font-size: 34px; color: var(--coral); line-height: 1; display: block; }
+  .stat-label { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 3px; }
+
+  .skill-tag { display: inline-block; font-size: 11.5px; font-weight: 500; padding: 4px 9px; border-radius: 2px; margin: 3px 3px 3px 0; }
+  .t-coral  { background: var(--coral-light); color: var(--coral-dark); }
+  .t-teal   { background: var(--teal-light);  color: #085041; }
+  .t-amber  { background: var(--amber-light); color: var(--amber-dark); }
+  .t-purple { background: var(--purple-light);color: var(--purple-dark); }
+
+  .strength-pill { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px; padding: 5px 11px; margin: 4px 4px 4px 0; border-radius: 20px; border: 1.5px solid; }
+  .sp-coral  { border-color: var(--coral);    color: var(--coral); }
+  .sp-teal   { border-color: var(--teal-mid); color: var(--teal-mid); }
+  .sp-amber  { border-color: var(--amber);    color: #a06b10; }
+  .sp-purple { border-color: var(--purple);   color: var(--purple-dark); }
+  .sp-ink    { border-color: #888;            color: #555; }
+
+  .edu-entry { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .edu-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .edu-degree { font-size: 13.5px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+  .edu-school { font-size: 12.5px; color: var(--teal-mid); font-weight: 500; margin-top: 1px; }
+  .edu-year   { font-size: 11.5px; color: #888; margin-top: 2px; }
+
+  .cert-badge { display: flex; align-items: center; gap: 10px; background: var(--soft); border-radius: 3px; padding: 10px 12px; margin-top: 8px; }
+  .cert-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; color: var(--white); font-weight: 700; font-family: var(--font-display); letter-spacing: 1px; }
+  .cert-text { font-size: 12px; color: var(--muted); line-height: 1.5; font-weight: 500; }
+
+  @media (max-width: 740px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px 32px; }
+    .contact-block { text-align: left; }
+    .header-slash { width: 160px; opacity: 0.5; }
+    .page { grid-template-columns: 1fr; padding: 0 16px 60px; margin-top: 32px; }
+    .sidebar { order: -1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-slash"></div>
+  <div class="header-bar"></div>
+  <div class="header-inner">
+    <div class="name-block">
+      <h1>Kelly<br><span>Setzer</span></h1>
+      <p class="tagline">Client Services Manager &nbsp;·&nbsp; Technology Leader &nbsp;·&nbsp; Lincoln, NE</p>
+    </div>
+    <div class="contact-block">
+      <p>2215 S 22nd Street, Lincoln, NE 68502</p>
+      <a href="tel:+14022397346">(402) 239-7346</a>
+      <a href="mailto:kelsetz_905@me.com">kelsetz_905@me.com</a>
+      <a href="https://www.linkedin.com/in/nebraskakelly/" target="_blank" class="li-btn">LinkedIn ↗</a>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <main>
+    <div class="summary-card">
+      <p>Dynamic and highly driven leader with nearly a decade of experience in team development and professional growth — shaped by a childhood of hard work in a small Nebraska community. From Broadcast Journalism to managing technology teams, I transform underperforming groups into high-achievers. Dedicated to DEI initiatives, active mentorship through Teammates, and giving a little back every single day.</p>
+    </div>
+
+    <div class="section-label">Professional Experience</div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Client Services Manager</div>
+        <div class="job-date">May 2022 — Present</div>
+      </div>
+      <div class="job-company">University of Nebraska – Lincoln · East Campus</div>
+      <ul>
+        <li>Lead a team of 10 employees supporting 3,500 endpoints and 1,500 personnel on UNL's East Campus</li>
+        <li>Improved SLA Achievement KPI from 65% to 90% — a 25-point gain</li>
+        <li>Served as TeamDynamix implementation lead for the department</li>
+        <li>Facilitate and develop departmental training programs for SharePoint</li>
+        <li>Implemented a professional development program and led the launch of the IT Mentorship Program</li>
+        <li>Manage large- and small-scale projects with timely stakeholder communication and execution</li>
+        <li>AI Task Force Member — implementing best practices and guiding principles for AI use in a public university setting</li>
+        <li>Core team member for the departmental IT audit</li>
+        <li>IT Allies member — UNL DEI initiative; provided DEI training to IT colleagues across the University System</li>
+        <li>Hiring manager: responsible for recruiting, onboarding, and training of new employees</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Regional Technology Service Manager</div>
+        <div class="job-date">June 2016 — May 2022</div>
+      </div>
+      <div class="job-company">Lincoln Public Schools · Lincoln, NE</div>
+      <ul>
+        <li>Led a team supporting 10+ schools and specialty locations, serving students and staff across the district</li>
+        <li>Project manager for annual Chromebook refresh program — preparing 9,000 Chromebooks each year for incoming students</li>
+        <li>Oversaw software and hardware implementation for 42,000+ students and 8,000+ staff members</li>
+        <li>Served on the Diversity, Equity, and Inclusion committee to implement initiatives and trainings across the department and district</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Apple Certified Mac Technician</div>
+        <div class="job-date">Oct 2013 — Feb 2016</div>
+      </div>
+      <div class="job-company">Simply Mac · Lincoln, NE</div>
+      <ul>
+        <li>Fully Apple-certified to provide expert customer service and in-depth knowledge of all Apple products</li>
+        <li>Repaired and troubleshot advanced software and hardware issues across Apple products and accessories</li>
+        <li>Assisted with managerial duties including inventory management and quality control</li>
+        <li>Coordinated the service team for optimal customer outcomes</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Learning Services Associate (Intern)</div>
+        <div class="job-date">Aug 2012 — Aug 2013</div>
+      </div>
+      <div class="job-company">Nebraska Educational Telecommunications (NET) · Lincoln, NE</div>
+      <ul>
+        <li>Social media liaison for various statewide initiatives</li>
+        <li>Designed print and electronic presentations for station viewers and members</li>
+        <li>Developed and implemented strategic plan for the PBS Kids Ready to Learn initiative</li>
+        <li>Collaborated with NET's Director of Community Engagement on statewide partner communication plans</li>
+        <li>Created "Coffee &amp; Conversation" — documentary screenings with facilitated community discussion</li>
+      </ul>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="section-label" style="margin-bottom:16px;">At a Glance</div>
+      <div class="stats-grid">
+        <div class="stat-cell"><span class="stat-num">10</span><span class="stat-label">Years Leading</span></div>
+        <div class="stat-cell"><span class="stat-num">10+</span><span class="stat-label">Direct Reports</span></div>
+        <div class="stat-cell"><span class="stat-num">50K+</span><span class="stat-label">Users Supported</span></div>
+        <div class="stat-cell"><span class="stat-num">90%</span><span class="stat-label">SLA Achievement</span></div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label" style="margin-bottom:16px;">Strengths &amp; Expertise</div>
+      <span class="skill-tag t-coral">Team Development</span>
+      <span class="skill-tag t-coral">Leadership</span>
+      <span class="skill-tag t-teal">Coaching &amp; Mentoring</span>
+      <span class="skill-tag t-teal">Training Development</span>
+      <span class="skill-tag t-amber">Strategic Hiring</span>
+      <span class="skill-tag t-amber">Project Planning</span>
+      <span class="skill-tag t-purple">DEI Initiatives</span>
+      <span class="skill-tag t-purple">Documentation &amp; Reporting</span>
+      <span class="skill-tag t-coral">Problem Solving</span>
+      <span class="skill-tag t-teal">TeamDynamix</span>
+      <span class="skill-tag t-amber">SharePoint</span>
+      <span class="skill-tag t-purple">AI Policy</span>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label" style="margin-bottom:14px;">Clifton Strengths</div>
+      <span class="strength-pill sp-coral">Relator</span>
+      <span class="strength-pill sp-teal">Arranger</span>
+      <span class="strength-pill sp-amber">Developer</span>
+      <span class="strength-pill sp-purple">Positivity</span>
+      <span class="strength-pill sp-ink">Achiever</span>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label" style="margin-bottom:16px;">Education</div>
+      <div class="edu-entry">
+        <div class="edu-degree">B.S. Broadcast Journalism</div>
+        <div class="edu-school">University of Nebraska – Lincoln</div>
+        <div class="edu-year">Minors: Political Science, History, Religious Studies · May 2013</div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-degree">Beatrice High School</div>
+        <div class="edu-school">Beatrice, Nebraska</div>
+        <div class="edu-year">May 2008</div>
+      </div>
+      <div class="cert-badge">
+        <div class="cert-icon"></div>
+        <div class="cert-text">Apple Certified Mac Technician &amp; Apple Certified Support Professional</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label" style="margin-bottom:12px;">Community</div>
+      <p style="font-size:13px; color:var(--muted); line-height:1.75;">Active mentor through the <strong style="color:var(--ink); font-weight:600;">Teammates Organization</strong> · IT Allies DEI advocate at UNL · PBS Kids Ready to Learn community programs</p>
+    </div>
+
+  </aside>
+</div>
+
+</body>
+</html>
